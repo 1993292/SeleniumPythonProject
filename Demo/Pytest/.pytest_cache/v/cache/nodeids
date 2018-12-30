@@ -1,0 +1,5 @@
+[
+  "test_sample.py::TestSample::()::test_login",
+  "test_sample.py::TestSample::()::test_demo_skip_1",
+  "test_sample.py::TestSample::()::test_demo_skip_2"
+]
