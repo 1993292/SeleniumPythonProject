@@ -16,7 +16,7 @@ class TestSample():
     @pytest.fixture()
     def test_setup(self):
         global driver
-        driver = webdriver.Chrome(executable_path="../../drivers/chromedriver")
+        driver = webdriver.Chrome(executable_path="drivers/chromedriver")
         driver.implicitly_wait(10)
         driver.maximize_window()
         yield
