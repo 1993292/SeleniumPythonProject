@@ -1,3 +1,4 @@
 {
+  "sample.py::TestSample::()::test_login": true,
   "test_sample.py::TestSample::()": true
 }

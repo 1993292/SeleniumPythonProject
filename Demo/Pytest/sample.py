@@ -1,5 +1,7 @@
 from selenium import webdriver
-import HtmlTestRunner
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.chrome.options import Options
+#import HtmlTestRunner
 import pytest
 import sys
 import os
@@ -14,14 +16,24 @@ from POMDemo.Pages.LoginPage import LoginPage
 class TestSample():
 
     @pytest.fixture()
-    def test_setup(self):
+    def test_setup(self, browser='CHROME'):
         global driver
-        driver = webdriver.Chrome(executable_path="../../drivers/chromedriver")
+       # driver = webdriver.Chrome(executable_path="../../drivers/chromedriver")
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--no-sandbox")
+        url= 'http://157.159.15.84:30612'
+        driver = webdriver.Remote(
+            command_executor=url,
+            desired_capabilities=getattr(DesiredCapabilities,browser))
+            #desired_capabilities=chrome_options.to_capabilities())
         driver.implicitly_wait(10)
         driver.maximize_window()
         yield
         driver.close()
         driver.quit()
+        print("Browser %s checks out!" % browser)
         print("Test completed")
 
     def test_login(self, test_setup):
