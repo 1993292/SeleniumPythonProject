@@ -20,7 +20,8 @@ chrome_options.add_argument("--disable-extensions")
 chrome_options.add_argument("--no-sandbox")
 url = 'http://192.168.0.102:31870/grid/console'
 #url = 'http://192.168.99.100:30405'
-driver = webdriver.Remote(command_executor=url, desired_capabilities=chrome_options.to_capabilities())
+driver = webdriver.Remote(command_executor=url,desired_capabilities=getattr(DesiredCapabilities, 'CHROME'))
+#desired_capabilities=chrome_options.to_capabilities())
 
 #driver = webdriver.Chrome(chrome_options=chrome_options, executable_path="../drivers/chromedriver")
 driver.get("https://google.com")
